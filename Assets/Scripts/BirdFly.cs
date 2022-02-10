@@ -23,4 +23,9 @@ public class BirdFly : MonoBehaviour
             rigidbody2D.velocity = Vector2.up * velocity;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Time.timeScale = 0;
+    }
 }
