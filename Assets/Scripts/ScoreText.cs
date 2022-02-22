@@ -6,8 +6,10 @@ using TMPro;
 
 public class ScoreText : MonoBehaviour
 {
+
     [SerializeField] int score = 0;
     [SerializeField] TextMeshProUGUI tmpro;
+
     // Start is called before the first frame update
     void Start()
     {

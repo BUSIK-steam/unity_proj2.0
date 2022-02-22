@@ -6,8 +6,9 @@ public class BirdFly : MonoBehaviour
 {
 
     [SerializeField] float velocity = 1;
+    [SerializeField] Manager manager;
     Rigidbody2D rigidbody2D;
-    private bool alreadyTouched = false;
+    bool alreadyTouched = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,12 @@ public class BirdFly : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && alreadyTouched == false)
         {
-            Debug.Log("touched");
+            Debug.Log("First Touched");
             rigidbody2D.isKinematic = false;
             alreadyTouched = true;
             FindObjectOfType<PipeSpawner>().StartSpawning();
+            manager.ShowScore();
+            manager.DisableStartUI();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -35,7 +38,6 @@ public class BirdFly : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        FindObjectOfType<Manager>().gameOver();
-        Time.timeScale = 0;
+        manager.GameOver();
     }
 }
